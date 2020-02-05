@@ -1,0 +1,15 @@
+name: Docker build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build docker image
+      run: docker build -t duczen/octoprint:latest .
+    - name: Publish docker image
+      run: |
+        docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        docker push duczen/octopring:latest
