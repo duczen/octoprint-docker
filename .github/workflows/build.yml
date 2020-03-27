@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Get/set tag from github env var
-      run: echo "::set-env name=TAG::${GITHUB_REF##*/}"
+      run: echo "::set-env name=TAG::$(echo $GITHUB_REF | cut -d '/' -f 3)"
     - name: Set up Docker Buildx
       id: buildx
       uses: crazy-max/ghaction-docker-buildx@v1
