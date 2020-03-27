@@ -27,5 +27,5 @@ jobs:
     - name: Publish docker image
       run: |
         docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker push duczen/octoprint:$TAG
-        docker push duczen/octoprint:latest
+        docker buildx push duczen/octoprint:$TAG
+        docker buildx push duczen/octoprint:latest
