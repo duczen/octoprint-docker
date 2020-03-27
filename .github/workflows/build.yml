@@ -19,13 +19,10 @@ jobs:
         version: latest
     - name: Run Buildx
       run: |
-       docker buildx build \
+        docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker buildx build \
           --platform linux/arm/v6,linux/arm/v7,linux/arm64 \
+          --push \
           -t duczen/octoprint:$TAG \
           -t duczen/octoprint:latest \
           .
-    - name: Publish docker image
-      run: |
-        docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker buildx push duczen/octoprint:$TAG
-        docker buildx push duczen/octoprint:latest
