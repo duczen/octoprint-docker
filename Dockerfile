@@ -17,7 +17,8 @@ RUN apk add --no-cache ca-certificates python3 py3-setuptools py3-pip raspberryp
 
 # Setup users/permissions for running non root
 RUN apk add --no-cache --virtual .build-deps shadow \
-    && adduser -S octoprint \
+    && addgroup octoprint \
+    && adduser -S -G octoprint octoprint \
     && adduser octoprint uucp \
     && groupmod -g $UUCP_GROUP uucp \
     && apk del .build-deps
