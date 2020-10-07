@@ -27,10 +27,9 @@ jobs:
           .
     - name: action-slack
       if: always()
-      uses: 8398a7/action-slack@v3.7.0
+      uses: 8398a7/action-slack@v3.8.0
       with:
         status: ${{ job.status }}
         fields: repo,message,commit,author,action,eventName,ref,workflow,job,took
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
