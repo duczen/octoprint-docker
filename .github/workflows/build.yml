@@ -20,7 +20,7 @@ jobs:
         TAG=$(echo $GITHUB_REF | cut -d '/' -f 3)
         docker login --username ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker buildx build \
-          --platform linux/arm/v6,linux/arm/v7,linux/arm64 \
+          --platform linux/arm/v6,linux/arm/v7 \
           --push \
           -t duczen/octoprint:$TAG \
           -t duczen/octoprint:latest \
