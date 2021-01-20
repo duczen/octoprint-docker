@@ -1,6 +1,6 @@
 FROM alpine:3.13.0
 
-ENV OCTOPRINT_VERSION 1.5.2
+ENV OCTOPRINT_VERSION 1.5.3
 ENV UUCP_GROUP 987
 
 # Build and install octoprint
